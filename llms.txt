@@ -1,0 +1,21 @@
+# Sandra Maria Eventos
+
+> Salão de festas e eventos em Carapicuíba, para até 150 convidados.
+
+Site do Salão de Festas e Eventos Sandra Maria, em Carapicuíba/SP. O objetivo do site é um só: fazer quem procura espaço para festa consultar a data disponível pelo WhatsApp ou pelo formulário.
+
+## Páginas
+- [Início](https://sandramariaeventos.com.br/): salão para até 150 convidados em Carapicuíba/SP
+- [O Espaço](https://sandramariaeventos.com.br/espaco): estrutura, capacidade e o que está incluído
+- [Eventos](https://sandramariaeventos.com.br/eventos): tipos de evento atendidos
+- [Casamento](https://sandramariaeventos.com.br/eventos/casamento)
+- [Aniversário e 15 anos](https://sandramariaeventos.com.br/eventos/aniversario-15-anos)
+- [Corporativo](https://sandramariaeventos.com.br/eventos/corporativo)
+- [Batizado e chá de bebê](https://sandramariaeventos.com.br/eventos/batizado-cha-de-bebe)
+- [O que muda o preço](https://sandramariaeventos.com.br/precos)
+- [Contato](https://sandramariaeventos.com.br/contato)
+
+## Contato
+- Site: https://sandramariaeventos.com.br
+- E-mail: sandramariaeventos@gmail.com
+- Telefone: (11) 95923-7827

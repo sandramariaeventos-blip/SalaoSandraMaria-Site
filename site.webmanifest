@@ -1,0 +1,13 @@
+{
+  "name": "Sandra Maria Eventos",
+  "short_name": "Sandra Maria",
+  "description": "Salão de festas em Carapicuíba para até 150 convidados: estacionamento, cozinha de apoio, mesas, cadeiras e som. Consulte sua data no WhatsApp.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#FFFFFF",
+  "theme_color": "#7B1E3A",
+  "icons": [
+    { "src": "/images/favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/images/favicon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

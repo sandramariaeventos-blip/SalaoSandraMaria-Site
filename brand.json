@@ -1,0 +1,60 @@
+{
+  "site": {
+    "name": "Sandra Maria Eventos",
+    "shortName": "Sandra Maria",
+    "legalName": "",
+    "cnpj": "",
+    "baseUrl": "https://sandramariaeventos.com.br",
+    "lang": "pt-BR",
+    "locale": "pt-BR",
+    "tagline": "Salão de festas e eventos em Carapicuíba, para até 150 convidados.",
+    "metaDescription": "Salão de festas em Carapicuíba para até 150 convidados: estacionamento, cozinha de apoio, mesas, cadeiras e som. Consulte sua data no WhatsApp."
+  },
+  "nicho": {
+    "segmento": "Locação de salão para festas e eventos empresariais",
+    "publico": "Quem organiza a festa: família (aniversário, 15 anos, casamento, batizado) e responsável por confraternização de empresa na região de Carapicuíba",
+    "dorPrincipal": "Achar um espaço com data livre, que caiba os convidados, tenha estacionamento e não exija montar tudo do zero",
+    "resultadoPrometido": "Data confirmada num espaço pronto para receber até 150 convidados, com resposta rápida no WhatsApp"
+  },
+  "tom": {
+    "formalidade": -1,
+    "tecnicidade": -2,
+    "energia": 1,
+    "diretividade": 2,
+    "pessoa": "primeira pessoa do plural (nós)",
+    "proibidos": [],
+    "ctaPrimario": "Consultar data",
+    "microcopy": "Respondemos no WhatsApp no mesmo dia."
+  },
+  "marca": {
+    "primary": "#7B1E3A",
+    "primaryDark": "#691931",
+    "deep": "#441020",
+    "accent": "#E8A6B8",
+    "bg": "#FFFFFF",
+    "bgAlt": "#FAF6F7",
+    "text": "#1E1518",
+    "textMuted": "#5C5054",
+    "border": "#EDE4E7",
+    "borderMid": "#DCCDD3",
+    "fontDisplay": "Playfair Display",
+    "fontBody": "Inter",
+    "fontsHref": "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+  },
+  "contato": {
+    "email": "sandramariaeventos@gmail.com",
+    "phone": "(11) 95923-7827",
+    "whatsapp": "5511959237827",
+    "address": "Avenida Sandra Maria, 28 - Jardim das Belezas, Carapicuíba/SP",
+    "linkedin": ""
+  },
+  "lead": {
+    "provider": "formspree",
+    "action": "",
+    "origin": "https://formspree.io"
+  },
+  "analytics": {
+    "gtmId": "",
+    "clarityId": ""
+  }
+}
