@@ -81,6 +81,83 @@
   --ds-gold-line:  rgba(201,169,97,0.34);
 }
 
+/* ── Superfície vinho ──
+   Bloco escuro reutilizável. Em vez de reescrever cada componente para o
+   fundo escuro, o escopo redeclara os mesmos tokens que o resto do arquivo
+   já consome, então card, fio, rótulo e formulário viram a versão escura
+   sozinhos. Aplique .section--wine numa <section>, ou .hero--wine no hero.
+
+   O acento vira dourado dentro do vinho: rosa claro sobre vinho não chega
+   em 4.5:1, o dourado #C9A961 dá 6.2:1. */
+.section--wine,
+.hero--wine,
+.page-hero,
+.footer,
+.cta-banner,
+.navbar,
+.navbar__mobile-menu {
+  --ds-bg:          #3A0E1B;
+  --ds-bg-alt:      #4A1424;
+  --ds-text:        #FBF7F4;
+  --ds-text-muted:  #E0C9CF;
+  --ds-text-dim:    #C3A4AD;
+  --ds-border:      rgba(255,255,255,0.13);
+  --ds-border-mid:  rgba(255,255,255,0.26);
+  --ds-blue-bright: #C9A961;
+  --ds-blue:        #C9A961;
+  --ds-navy:        #E3C98C;
+  --ds-card-bg:     rgba(255,255,255,0.04);
+  --ds-card-hover:  rgba(255,255,255,0.07);
+  --ds-shadow-card: none;
+  --ds-accent-cyan: #C9A961;
+}
+.section--wine,
+.hero--wine {
+  background: var(--ds-bg);
+  color: var(--ds-text);
+}
+/* Alternância dentro do vinho: um tom acima, não branco. */
+.section--wine.section--alt { background: var(--ds-bg-alt); }
+.section--wine.section--alt::before { display: none; }
+/* Botão sólido no escuro é dourado com texto vinho. Dourado com texto branco
+   ficaria em 1.9:1. */
+.section--wine .btn--primary,
+.hero--wine .btn--primary,
+.page-hero .btn--primary,
+.navbar .btn--primary,
+.navbar__mobile-menu .btn--primary,
+.footer .btn--primary,
+.cta-banner .btn--primary {
+  background: var(--ds-blue-bright);
+  color: #3A0E1B;
+}
+.section--wine .btn--primary:hover,
+.hero--wine .btn--primary:hover,
+.page-hero .btn--primary:hover,
+.navbar .btn--primary:hover,
+.navbar__mobile-menu .btn--primary:hover,
+.footer .btn--primary:hover,
+.cta-banner .btn--primary:hover { background: #E3C98C; color: #3A0E1B; }
+.section--wine .btn--ghost,
+.hero--wine .btn--ghost,
+.page-hero .btn--ghost { color: var(--ds-text); border-color: var(--ds-border-mid); }
+.section--wine .btn--ghost:hover,
+.hero--wine .btn--ghost:hover,
+.page-hero .btn--ghost:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.5);
+  color: var(--ds-text);
+}
+/* A foto ganha um fio quente em vez de encostar direto no vinho. */
+.section--wine .photo-frame,
+.hero--wine .photo-frame,
+.page-hero .photo-frame { border: 1px solid var(--ds-border); }
+.section--wine .form-select,
+.hero--wine .form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23E0C9CF' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+}
+.section--wine .form-select option { background: #3A0E1B; color: #FBF7F4; }
+
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
@@ -254,16 +331,17 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; line-height: 1.2
   height: 68px;
   display: flex;
   align-items: center;
-  background: rgba(255,255,255,0.85);
+  background: rgba(58,14,27,0.88);
+  color: var(--ds-text);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid transparent;
   transition: var(--ds-transition-slow);
 }
 .navbar.scrolled {
-  background: rgba(255,255,255,0.95);
+  background: rgba(58,14,27,0.97);
   border-bottom: 1px solid var(--ds-border);
-  box-shadow: 0 4px 18px rgba(15,23,42,0.05);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.28);
 }
 .navbar__inner {
   max-width: 1160px;
@@ -330,7 +408,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; line-height: 1.2
 }
 .navbar__link:hover, .navbar__link.active {
   color: var(--ds-text);
-  background: rgba(123,30,58,0.06);
+  background: rgba(255,255,255,0.08);
 }
 .navbar__link.active::after {
   content: '';
@@ -349,7 +427,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; line-height: 1.2
 }
 .navbar__link--pillar:hover, .navbar__link--pillar.active {
   color: var(--ds-blue);
-  background: rgba(123,30,58,0.09);
+  background: rgba(255,255,255,0.10);
 }
 
 /* Dropdown */
@@ -359,7 +437,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; line-height: 1.2
   top: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%) translateY(-8px);
-  background: #fff;
+  background: #4A1424;
   border: 1px solid var(--ds-border);
   border-radius: var(--ds-radius);
   padding: 8px;
@@ -367,7 +445,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; line-height: 1.2
   opacity: 0;
   pointer-events: none;
   transition: var(--ds-transition);
-  box-shadow: 0 16px 40px rgba(15,23,42,0.10);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
 }
 /* Ponte invisivel: cobre o vao de 8px para o hover nao se perder no meio do caminho */
 .navbar__dropdown-menu::before {
@@ -397,7 +475,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; line-height: 1.2
   transition: var(--ds-transition);
 }
 .navbar__dropdown-item:hover {
-  background: var(--ds-mint-dim);
+  background: rgba(255,255,255,0.08);
   color: var(--ds-blue-bright);
 }
 .navbar__dropdown-item svg { color: var(--ds-blue-bright); flex-shrink: 0; }
@@ -420,7 +498,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; line-height: 1.2
   display: none;
   position: fixed;
   inset: 68px 0 0 0;
-  background: rgba(255,255,255,0.98);
+  background: rgba(58,14,27,0.98);
   backdrop-filter: blur(20px);
   z-index: 999;
   padding: 24px;
@@ -444,7 +522,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; line-height: 1.2
 .navbar__mobile-link:hover {
   color: var(--ds-blue-bright);
   border-color: var(--ds-border);
-  background: var(--ds-mint-dim);
+  background: rgba(255,255,255,0.07);
 }
 .navbar__mobile-cta { margin-top: 16px; width: 100%; justify-content: center; }
 
@@ -1155,43 +1233,48 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; line-height: 1.2
 .blog-card__excerpt { font-size: 0.83rem; color: var(--ds-text-muted); line-height: 1.5; }
 .blog-card__date { font-size: 0.75rem; color: var(--ds-text-dim); font-family: var(--ds-font-display); font-weight: 500; margin-top: auto; padding-top: 8px; }
 
-/* ── CTA Banner (dark — canônico v2.0) ── */
+/* ── CTA Banner ──
+   Era um card com gradiente, borda e sombra flutuando dentro da seção. Virou
+   bloco vinho de ponta a ponta, no mesmo vocabulário das outras superfícies
+   escuras. Tokens vêm do escopo vinho lá em cima. */
 .cta-banner {
-  padding: 80px 0;
+  padding: clamp(90px, 11vw, 150px) 0;
   position: relative;
   overflow: hidden;
+  background: var(--ds-bg);
+  color: var(--ds-text);
 }
-.cta-banner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(68,16,32,0.06) 0%, rgba(123,30,58,0.03) 100%);
-}
+.cta-banner::before { display: none; }
 .cta-banner__inner {
   position: relative;
   z-index: 1;
   text-align: center;
-  padding: 64px 48px;
-  background: linear-gradient(135deg, #441020 0%, #691931 100%);
-  border: 1px solid rgba(232,166,184,0.20);
-  border-radius: var(--ds-radius-xl);
-  box-shadow: 0 20px 60px rgba(68,16,32,0.20);
-  color: #fff;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ds-text);
 }
 .cta-banner__inner h2,
-.cta-banner__inner h3 { color: #fff; }
+.cta-banner__inner h3 { color: var(--ds-text); }
 .cta-banner__title {
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
-  font-weight: 800;
-  margin-bottom: 16px;
+  font-size: clamp(2rem, 4.4vw, 3.3rem);
+  font-weight: 500;
+  margin-bottom: 18px;
 }
 .cta-banner__text {
   font-size: 1.05rem;
-  color: rgba(255,255,255,0.78);
+  color: var(--ds-text-muted);
   max-width: 520px;
-  margin: 0 auto 32px;
-  line-height: 1.6;
+  margin: 0 auto 34px;
+  line-height: 1.7;
 }
+/* Branco sólido sobre vinho é o contraste mais forte da página, então o
+   botão de fechamento não precisa de sombra nem de salto no hover. */
+.cta-banner .btn--white:hover { transform: none; box-shadow: none; background: #F1E7E9; }
 
 /* ── FAQ ──
    Cada pergunta era um card com moldura e sombra. Agora é uma linha
@@ -1300,7 +1383,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; line-height: 1.2
 
 /* ── Footer (dark — closing institucional v2.0) ── */
 .footer {
-  background: #1E1518;
+  background: #26080F;   /* vinho um tom abaixo do CTA, para fechar a página */
   border-top: 1px solid var(--ds-border);
   padding: 64px 0 32px;
   position: relative;
@@ -1492,21 +1575,16 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; line-height: 1.2
 .form-hint a { color: var(--ds-blue-bright); font-weight: 600; }
 
 /* ── Hero interno (páginas de solução) — light ── */
+/* Abertura das páginas internas: mesmo vinho do hero da home, para a marca
+   aparecer já no topo de qualquer entrada vinda da busca. */
 .page-hero {
-  padding: 120px 0 64px;
+  padding: 132px 0 76px;
   position: relative;
   overflow: hidden;
-  background: var(--ds-bg-alt);
+  background: var(--ds-bg);
   color: var(--ds-text);
 }
-.page-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 85% 30%, rgba(123,30,58,0.08) 0%, transparent 50%);
-  pointer-events: none;
-}
+.page-hero::before { display: none; }
 .page-hero h1, .page-hero h2, .page-hero h3 { color: var(--ds-text); }
 .page-hero__content { max-width: 680px; position: relative; z-index: 1; }
 .page-hero__breadcrumb {

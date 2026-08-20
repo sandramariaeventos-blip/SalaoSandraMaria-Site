@@ -232,7 +232,8 @@
 </section>
 
 <section class="section section--alt" id="contato">
-  <div class="container" style="max-width:640px;">
+  <div class="container" style="max-width:680px;">
+    <p class="section-label">CONSULTA DE DATA</p>
     <h2 class="section-title">Consultar data para a empresa</h2>
     <p class="section-text">Conferimos a agenda e mandamos o valor no WhatsApp no mesmo dia.</p>
 
@@ -255,12 +256,22 @@
           <input class="form-input" id="lf_data" name="data" type="date" required>
         </div>
         <div class="form-group">
-          <label class="form-label" for="lf_pessoas">Quantas pessoas</label>
-          <input class="form-input" id="lf_pessoas" name="pessoas" type="number" min="1" max="150" required placeholder="Ex.: 80">
+          <label class="form-label" for="lf_pessoas">Pessoas <span>(aproximado)</span></label>
+          <select class="form-select" id="lf_pessoas" name="pessoas">
+            <option value="">Selecione</option>
+            <option>Até 50</option>
+            <option>De 51 a 100</option>
+            <option>De 101 a 150</option>
+            <option>Ainda não sei</option>
+          </select>
         </div>
       </div>
+      <div class="form-group">
+        <label class="form-label" for="lf_msg">Algo a mais <span>(opcional)</span></label>
+        <input class="form-input" id="lf_msg" name="mensagem" type="text" placeholder="Horário, buffet, decoração">
+      </div>
       <button type="submit" class="btn btn--primary btn--lg" style="width:100%;">Quero o valor para a minha data</button>
-      <p style="margin-top:12px; font-size:0.78rem; color:var(--ds-text-muted);">
+      <p class="form-hint">
         Ao enviar você concorda com a <a href="/privacidade">Política de Privacidade</a>.
         Usamos seus dados apenas para responder sobre a locação.
       </p>
