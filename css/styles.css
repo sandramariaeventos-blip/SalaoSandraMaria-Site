@@ -65,6 +65,13 @@
   --ds-dark-text-dim:  rgba(255,255,255,0.55);
   --ds-dark-border:    rgba(255,255,255,0.14);
   --ds-accent-cyan:    #E8A6B8;   /* gradientes sobre fundo escuro */
+
+  /* Dourado: acento de festa, só sobre superfície escura.
+     #C9A961 sobre #441020 = 5.6:1, passa WCAG AA para texto normal. */
+  --ds-gold:       #C9A961;
+  --ds-gold-soft:  #E3C98C;
+  --ds-gold-dim:   rgba(201,169,97,0.14);
+  --ds-gold-line:  rgba(201,169,97,0.34);
 }
 
 /* ── Reset ── */
@@ -505,6 +512,84 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
   flex-wrap: wrap;
 }
 
+/* ── Hero escuro (home) ──
+   Fundo é gradiente puro, não imagem: a foto do salão continua sendo um <img>
+   com fetchpriority=high, então o LCP não regride. */
+.hero--dark {
+  background:
+    radial-gradient(ellipse 70% 60% at 78% 18%, rgba(201,169,97,0.16) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 55% at 10% 95%, rgba(232,166,184,0.10) 0%, transparent 50%),
+    linear-gradient(160deg, #5A1428 0%, var(--ds-dark-bg) 45%, #300B16 100%);
+  color: var(--ds-dark-text);
+}
+.hero--dark::before { display: none; }
+.hero--dark h1,
+.hero--dark .hero__title { color: var(--ds-dark-text); }
+.hero--dark .hero__text { color: var(--ds-dark-text-mid); }
+.hero--dark .hero__title .gradient-text {
+  background: linear-gradient(100deg, var(--ds-gold-soft) 0%, var(--ds-gold) 55%, #A8823F 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero--dark .hero__eyebrow {
+  color: var(--ds-gold);
+  background: var(--ds-gold-dim);
+  border-color: var(--ds-gold-line);
+}
+/* Selo de credibilidade logo abaixo do H1. */
+.hero__badge {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 26px;
+  padding: 12px 18px;
+  border-radius: var(--ds-radius);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--ds-gold-line);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--ds-dark-text-mid);
+  max-width: 480px;
+}
+.hero__badge svg { flex-shrink: 0; margin-top: 2px; color: var(--ds-gold); }
+.hero__badge strong { color: var(--ds-dark-text); font-weight: 600; }
+
+.hero__note { margin-top: 14px; font-size: 0.85rem; color: var(--ds-text-muted); }
+.hero--dark .hero__note { color: var(--ds-dark-text-dim); }
+
+/* Barra de números: no escuro o número vira dourado. */
+.hero--dark .social-proof-bar {
+  background: rgba(255,255,255,0.05);
+  border-color: var(--ds-dark-border);
+}
+/* .sp-item__val usa gradiente + text-fill-color:transparent, então `color` não
+   tem efeito nenhum: o que precisa trocar é o gradiente. */
+.hero--dark .sp-item__val {
+  background: linear-gradient(135deg, var(--ds-gold-soft) 0%, var(--ds-gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.hero--dark .sp-item__label { color: var(--ds-dark-text-dim); }
+.hero--dark .sp-divider { background: var(--ds-dark-border); }
+
+/* Botão fantasma precisa de contorno claro no escuro. */
+.hero--dark .btn--ghost {
+  color: var(--ds-dark-text);
+  border-color: rgba(255,255,255,0.30);
+  background: rgba(255,255,255,0.04);
+}
+.hero--dark .btn--ghost:hover {
+  border-color: var(--ds-gold);
+  color: var(--ds-gold);
+  background: rgba(201,169,97,0.10);
+}
+/* Moldura da foto ganha fio dourado para separar do fundo vinho. */
+.hero--dark .photo-frame {
+  border-color: var(--ds-gold-line);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+}
+
 /* Hero Visual */
 .hero__visual {
   position: relative;
@@ -850,6 +935,28 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
   padding: 12px 18px;
   font-size: 0.84rem;
   color: var(--ds-text-muted);
+}
+
+/* ── Mapa ── */
+.map-block { margin-top: 40px; }
+.map-embed {
+  border-radius: var(--ds-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--ds-border);
+  box-shadow: var(--ds-shadow-card);
+  aspect-ratio: 16 / 8;
+  background: var(--ds-bg-alt);
+}
+.map-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
+.map-block__note {
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: var(--ds-text-muted);
+  line-height: 1.65;
+}
+.map-block__note a { color: var(--ds-blue-bright); font-weight: 600; }
+@media (max-width: 580px) {
+  .map-embed { aspect-ratio: 4 / 3; }
 }
 
 .gallery {
