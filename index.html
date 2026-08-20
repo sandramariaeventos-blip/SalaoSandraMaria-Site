@@ -254,29 +254,30 @@
 
 <section class="section">
   <div class="container">
+    <p class="section-label">COMO FUNCIONA</p>
     <h2 class="section-title">Reservar é rápido</h2>
     <p class="section-text">São três passos. Você só marca visita depois de saber que a data está livre.</p>
-    <div class="timeline" style="margin:40px auto 0;">
-      <div class="timeline-item sr-up">
+    <div class="timeline sr-stagger" style="margin-top:56px;">
+      <div class="timeline-item">
         <div class="timeline-item__dot"></div>
         <div class="timeline-item__content">
-          <span class="timeline-item__year">Passo 1</span>
+          <span class="timeline-item__year"><span class="sr-only">Passo </span>01</span>
           <h3 class="timeline-item__title">Você manda a data e o tipo de evento</h3>
           <p class="timeline-item__text">Pelo formulário aqui embaixo ou direto no WhatsApp.</p>
         </div>
       </div>
-      <div class="timeline-item sr-up">
+      <div class="timeline-item">
         <div class="timeline-item__dot"></div>
         <div class="timeline-item__content">
-          <span class="timeline-item__year">Passo 2</span>
+          <span class="timeline-item__year"><span class="sr-only">Passo </span>02</span>
           <h3 class="timeline-item__title">A gente confere a agenda e passa o valor</h3>
           <p class="timeline-item__text">Com o que está incluído e o que muda o preço no seu caso.</p>
         </div>
       </div>
-      <div class="timeline-item sr-up">
+      <div class="timeline-item">
         <div class="timeline-item__dot"></div>
         <div class="timeline-item__content">
-          <span class="timeline-item__year">Passo 3</span>
+          <span class="timeline-item__year"><span class="sr-only">Passo </span>03</span>
           <h3 class="timeline-item__title">Você visita e fecha a data</h3>
           <p class="timeline-item__text">Combinamos um horário para você conhecer o salão antes de confirmar.</p>
         </div>
@@ -329,7 +330,8 @@
 </section>
 
 <section class="section" id="contato">
-  <div class="container" style="max-width:640px;">
+  <div class="container" style="max-width:680px;">
+    <p class="section-label">CONSULTA DE DATA</p>
     <h2 class="section-title">Consultar data disponível</h2>
     <p class="section-text">Diga a data e o tipo de evento. Conferimos a agenda e respondemos no WhatsApp no mesmo dia.</p>
 
@@ -364,8 +366,24 @@
           </select>
         </div>
       </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="lf_convidados">Convidados <span>(aproximado)</span></label>
+          <select class="form-select" id="lf_convidados" name="convidados">
+            <option value="">Selecione</option>
+            <option>Até 50</option>
+            <option>De 51 a 100</option>
+            <option>De 101 a 150</option>
+            <option>Ainda não sei</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="lf_msg">Algo a mais <span>(opcional)</span></label>
+          <input class="form-input" id="lf_msg" name="mensagem" type="text" placeholder="Horário, buffet, decoração">
+        </div>
+      </div>
       <button type="submit" class="btn btn--primary btn--lg" style="width:100%;">Quero saber se minha data está livre</button>
-      <p style="margin-top:12px; font-size:0.78rem; color:var(--ds-text-muted);">
+      <p class="form-hint">
         Ao enviar você concorda com a <a href="/privacidade">Política de Privacidade</a>.
         Usamos seus dados apenas para responder sobre a locação.
       </p>

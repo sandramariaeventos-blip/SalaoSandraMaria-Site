@@ -1432,25 +1432,30 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; line-height: 1.2
 .cookie-banner__actions { display: flex; gap: 10px; }
 
 /* ── Form ── */
-.form-group { margin-bottom: 20px; }
+/* ── Formulário ──
+   Campo com fio embaixo em vez de caixa fechada. Menos moldura na tela e
+   o cursor cai direto sobre a linha, que é o que o olho já procura. */
+.form-group { margin-bottom: 30px; }
 .form-label {
   display: block;
-  font-family: var(--ds-font-display);
-  font-size: 0.85rem;
+  font-family: var(--ds-font-body);
+  font-size: 0.68rem;
   font-weight: 600;
-  color: var(--ds-text);
-  margin-bottom: 8px;
-  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ds-text-muted);
+  margin-bottom: 12px;
 }
 .form-label span { color: var(--ds-blue-bright); }
 .form-input, .form-select, .form-textarea {
   width: 100%;
-  background: #fff;
-  border: 1px solid var(--ds-border-mid);
-  border-radius: var(--ds-radius);
-  padding: 13px 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--ds-border-mid);
+  border-radius: 0;
+  padding: 10px 2px;
   font-family: var(--ds-font-body);
-  font-size: 0.95rem;
+  font-size: 1.02rem;
   color: var(--ds-text);
   transition: var(--ds-transition);
   outline: none;
@@ -1458,19 +1463,33 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; line-height: 1.2
 }
 .form-input::placeholder, .form-textarea::placeholder { color: var(--ds-text-dim); }
 .form-input:focus, .form-select:focus, .form-textarea:focus {
-  border-color: var(--ds-blue-bright);
-  box-shadow: 0 0 0 3px rgba(123,30,58,0.12);
+  border-bottom-color: var(--ds-blue-bright);
+  border-bottom-width: 2px;
+  padding-bottom: 9px;   /* compensa o fio de 2px, senão o campo pula 1px */
+  box-shadow: none;
+}
+/* Teclado precisa de um foco visível que não dependa só da cor do fio. */
+.form-input:focus-visible, .form-select:focus-visible, .form-textarea:focus-visible {
+  outline: 2px solid var(--ds-blue-bright);
+  outline-offset: 4px;
 }
 .form-select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236E645E' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 14px center;
-  padding-right: 40px;
+  background-position: right 2px center;
+  padding-right: 32px;
   cursor: pointer;
 }
 .form-select option { background: #fff; color: var(--ds-text); }
-.form-textarea { resize: vertical; min-height: 120px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-textarea { resize: vertical; min-height: 90px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px; }
+.form-hint {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: var(--ds-text-muted);
+}
+.form-hint a { color: var(--ds-blue-bright); font-weight: 600; }
 
 /* ── Hero interno (páginas de solução) — light ── */
 .page-hero {
@@ -1567,37 +1586,49 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; line-height: 1.2
 .team-card__name { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; color: var(--ds-text); }
 .team-card__role { font-size: 0.83rem; color: var(--ds-blue-bright); font-family: var(--ds-font-display); font-weight: 600; margin-bottom: 12px; }
 .team-card__bio { font-size: 0.85rem; color: var(--ds-text-muted); line-height: 1.55; }
-.timeline { display: flex; flex-direction: column; gap: 0; max-width: 640px; }
-.timeline-item { display: flex; gap: 24px; position: relative; }
-.timeline-item:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  left: 18px; top: 44px;
-  width: 2px;
-  bottom: -1px;
-  background: var(--ds-border);
+/* ── Passos ──
+   Era linha do tempo vertical com bolinha e fio ligando os pontos, num
+   layout que empurrava o terceiro passo bem para baixo da dobra. Agora são
+   três colunas com o número em serif grande e um fio separando cada uma. */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  max-width: none;
 }
-.timeline-item__dot {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: var(--ds-mint-dim);
-  border: 2px solid var(--ds-blue-bright);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  color: var(--ds-blue-bright);
-  z-index: 1;
+.timeline-item {
+  display: block;
+  position: relative;
+  padding: 30px 40px 0 0;
+  margin-right: 40px;
+  border-top: 1px solid var(--ds-border);
 }
-.timeline-item__content { padding-bottom: 36px; }
+.timeline-item:last-child { margin-right: 0; padding-right: 0; }
+.timeline-item::after { display: none; }
+/* A bolinha some: o número já é o marcador. */
+.timeline-item__dot { display: none; }
+.timeline-item__content { padding-bottom: 0; }
 .timeline-item__year {
+  display: block;
   font-family: var(--ds-font-display);
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 3.1rem;
+  font-weight: 400;
   color: var(--ds-blue-bright);
-  letter-spacing: 0.08em;
-  margin-bottom: 4px;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 20px;
+  /* "Passo 1" no HTML, mas na tela só o algarismo importa. */
+  font-variant-numeric: lining-nums;
 }
-.timeline-item__title { font-size: 0.97rem; font-weight: 700; margin-bottom: 6px; color: var(--ds-text); }
-.timeline-item__text { font-size: 0.85rem; color: var(--ds-text-muted); line-height: 1.55; }
+.timeline-item__title {
+  font-family: var(--ds-font-display);
+  font-size: 1.32rem;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 10px;
+  color: var(--ds-text);
+}
+.timeline-item__text { font-size: 0.94rem; color: var(--ds-text-muted); line-height: 1.7; }
 
 /* ── Responsive ── */
 @media (max-width: 1024px) {
@@ -1615,6 +1646,12 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; line-height: 1.2
   .metric { padding: 30px 24px; }
   .metric:nth-child(odd) { border-left: none; padding-left: 0; }
   .blog-grid { grid-template-columns: 1fr 1fr; }
+  /* Três passos em 860px dariam colunas de ~250px com o número gigante em cima
+     do título. Empilha e diminui o numeral. */
+  .timeline { grid-template-columns: 1fr; }
+  .timeline-item { padding: 26px 0 30px; margin-right: 0; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-item__year { font-size: 2.4rem; margin-bottom: 14px; }
   .gallery { grid-template-columns: 1fr 1fr; }
   .gallery .photo-frame--wide img { height: 280px; }
 }
