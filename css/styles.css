@@ -1518,6 +1518,8 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; line-height: 1.2
 /* ── Formulário ──
    Campo com fio embaixo em vez de caixa fechada. Menos moldura na tela e
    o cursor cai direto sobre a linha, que é o que o olho já procura. */
+/* O rótulo do primeiro campo encostava no texto de apoio da seção. */
+#leadForm { margin-top: 44px; }
 .form-group { margin-bottom: 30px; }
 .form-label {
   display: block;
