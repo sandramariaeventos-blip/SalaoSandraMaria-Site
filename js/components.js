@@ -53,8 +53,10 @@ const SITE = {
     ]},
   ],
 
-  /* Faixa de logos/selos rolando. Lista de strings; [] esconde a faixa. */
-  trustBar: ['ATÉ 150 CONVIDADOS', 'ESTACIONAMENTO NO LOCAL', 'COZINHA DE APOIO', 'MESAS E CADEIRAS', 'SOM NO SALÃO'],
+  /* Faixa de logos/selos rolando. Lista de strings; [] esconde a faixa.
+     Vazia de propósito: texto em loop automático é ruído, e esses mesmos itens
+     já aparecem na seção do que está incluído na locação. */
+  trustBar: [],
 
   analytics: { gtmId: '', clarityId: '' },
   locale: 'pt-BR',
@@ -418,7 +420,8 @@ function initTrustBar() {
   track.setAttribute('aria-label', 'Nossos parceiros');
 
   const items = SITE.trustBar;
-  if (!items.length) return;
+  // Sem itens, a faixa vazia deixava uma tira branca de 74px na página.
+  if (!items.length) { inner.closest('.trust-bar').remove(); return; }
 
   // Double for seamless loop
   const allItems = [...items, ...items];
